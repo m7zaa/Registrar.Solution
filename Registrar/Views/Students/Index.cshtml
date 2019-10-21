@@ -2,20 +2,21 @@
   Layout = "_Layout";
 }
 
-@model Registrar.Models.Student
+@using Registrar.Models;
+@model List<Registrar.Models.Student>;
 
-<h2>Add a Course</h2>
+<h1>Students</h1>
 
-<h4>Add a Student to this task: @Html.DisplayFor(model => model.StudentName)</h4>
-
-@using (Html.BeginForm())
+@if (@Model.Count == 0)
 {
-    @Html.HiddenFor(model => model.StudentId)
+  <h3>No students have been added yet!</h3>
+} 
 
-    @Html.Label("Select Course")
-    @Html.DropDownList("CourseId")
-
-    <input type="submit" value="Save" />
+@foreach (Student student in Model)
+{
+  <li>@Html.ActionLink($"{student.StudentName}", "Details", new { id = student.StudentId })</li>
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Add new student", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

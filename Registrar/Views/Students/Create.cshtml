@@ -10,6 +10,8 @@
 {
     @Html.LabelFor(model => model.StudentName)
     @Html.TextBoxFor(model => model.StudentName)
+    @Html.LabelFor(model => model.Enrollment)
+    @Html.EditorFor(model => model.Enrollment, new { @student = "enrollment" })
 
     @Html.Label("Select course")
     @Html.DropDownList("CourseId")
