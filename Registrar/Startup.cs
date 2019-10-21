@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Registrar.Models;
+//new code
+using Microsoft.AspNetCore.Identity;
 
 namespace Registrar
 {
@@ -27,6 +29,11 @@ namespace Registrar
             services.AddEntityFrameworkMySql()
               .AddDbContext<RegistrarContext>(options => options
               .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+
+            //new code
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                      .AddEntityFrameworkStores<RegistrarContext>()
+                      .AddDefaultTokenProviders();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -35,11 +42,14 @@ namespace Registrar
 
             app.UseDeveloperExceptionPage();
 
+            //new code
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                  name: "default",
-                  template: "{controller=Home}/{action=Index}/{id?}");
+            name: "default",
+            template: "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.Run(async (context) =>
