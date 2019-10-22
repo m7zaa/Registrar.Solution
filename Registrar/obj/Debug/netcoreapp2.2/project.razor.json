@@ -1,5 +1,5 @@
 {
-  "FilePath": "/Users/Guest/Desktop/Registrar.Solution/Registrar/Registrar.csproj",
+  "FilePath": "/Users/Zaayer/Desktop/Registrar.Solution/Registrar/Registrar.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -3023,6 +3023,11 @@
     {
       "FilePath": "Views/Shared/_Layout.cshtml",
       "TargetPath": "Views/Shared/_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Account/Login.cshtml",
+      "TargetPath": "Views/Account/Login.cshtml",
       "FileKind": "mvc"
     },
     {
